@@ -24,6 +24,12 @@ namespace WebApplication1.Controllers
             return Ok(await _devInterface.GetDevs());
         }
 
+        [HttpGet("getbyid")]
+        public async Task<ActionResult<ServiceResponse<DevModel>>> GetDevById(int id) 
+        {
+            return Ok( await _devInterface.GetDevById(id));
+        }
+
 
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<DevModel>>>> CreateDev(DevModel newDev)

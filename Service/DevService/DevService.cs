@@ -71,10 +71,41 @@ namespace WebApplication1.Service.DevService
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<DevModel>> GetDevById(int id)
+        public async Task<ServiceResponse<DevModel>> GetDevById(int id)
         {
-            throw new NotImplementedException();
-        } // falta fazer
+            ServiceResponse<DevModel> serviceResponse = new ServiceResponse<DevModel>();
+
+            try
+            {                
+                DevModel dev = _context.Desenvolvedores.FirstOrDefault(x => x.Id == id);
+
+                
+
+                if (dev != null)
+                {
+                    serviceResponse.Dados = dev;
+                    serviceResponse.Mensagem = $" Desenvolvedor encontrado com a chave {dev.Id} ";
+                } else
+                {
+                    serviceResponse.Dados = null;
+                    serviceResponse.Mensagem = "Não encontramos nenhum desenvolvedor com esta chave";
+                    serviceResponse.Sucesso = false;
+                }
+
+
+
+
+
+            } catch (Exception ex)
+            {
+
+            }
+
+            return serviceResponse;
+
+
+
+        }
 
         public async Task<ServiceResponse<List<DevModel>>> GetDevs()
         {
