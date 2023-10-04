@@ -25,7 +25,7 @@ namespace WebApplication1.Service.DevService
                     serviceResponse.Sucesso = false;
                 }
 
-
+                serviceResponse.Mensagem = "Desenvolvedor cadastrado com sucesso";
                 _context.Add(newDev);
                 await _context.SaveChangesAsync();
 

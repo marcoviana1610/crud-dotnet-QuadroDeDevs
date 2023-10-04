@@ -1,9 +1,12 @@
-﻿namespace WebApplication1.Enums
+﻿using System.Text.Json.Serialization;
+
+namespace WebApplication1.Enums
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum SenioridadeEnum
     {
-        Sênior,
-        Júnior,
+        Junior,
         Pleno,
+        Senior,
     }
 }
